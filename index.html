@@ -10,17 +10,28 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
     body { background-color: #e9ecef; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 20px; gap: 30px; flex-wrap: wrap; }
 
-    /* --- Control Panel --- */
-    .control-panel { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 340px; display: flex; flex-direction: column; gap: 15px; }
-    .control-panel h2 { font-size: 18px; border-bottom: 2px solid #006aff; padding-bottom: 10px; }
-    .form-group { display: flex; flex-direction: column; gap: 5px; }
-    .form-group label { font-size: 14px; font-weight: bold; color: #333; }
-    .form-group input, .form-group select { padding: 8px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
-    .radio-group { display: flex; gap: 10px; background: #f0f2f5; padding: 10px; border-radius: 8px; font-size: 13px; }
-    .btn-action { background: #006aff; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-    .btn-save { background: #28a745; margin-top: 10px; }
+    /* --- Panel Kendali --- */
+    .control-panel { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 350px; display: flex; flex-direction: column; gap: 15px; }
+    .control-panel h2 { font-size: 18px; border-bottom: 2px solid #006aff; padding-bottom: 10px; color: #1c1e21; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: bold; color: #4b4f56; }
+    .form-group input, .form-group select { padding: 9px; border: 1px solid #ccd0d5; border-radius: 8px; font-size: 14px; outline: none; transition: 0.2s; }
+    .form-group input:focus, .form-group select:focus { border-color: #006aff; }
+    
+    .radio-group { display: flex; gap: 15px; background: #f0f2f5; padding: 10px; border-radius: 8px; font-size: 14px; align-items: center; }
+    .radio-group label { font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+    
+    .row-inputs { display: flex; gap: 10px; }
+    .row-inputs input { flex: 1; }
 
-    /* --- Area Capture (Kotak Bersih) --- */
+    .btn-action { background: #006aff; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn-action:hover { background: #0055ff; }
+    .btn-save { background: #31a24c; margin-top: 5px; padding: 12px; font-size: 15px; }
+    .btn-save:hover { background: #288c40; }
+    .btn-clear { background: #fa383e; }
+    .btn-clear:hover { background: #d92e34; }
+
+    /* --- Area Capture (Messenger Mockup) --- */
     #capture-area { 
         width: 380px; 
         height: 680px; 
@@ -28,67 +39,71 @@
         display: flex; 
         flex-direction: column; 
         overflow: hidden; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
         position: relative; 
         border: 1px solid #ddd; 
     }
     
-    .chat-header { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #e4e6eb; }
-    .back-btn { color: #006aff; font-size: 20px; margin-right: 12px; }
+    /* Header */
+    .chat-header { display: flex; align-items: center; padding: 12px 15px; border-bottom: 1px solid #e4e6eb; box-shadow: 0 1px 2px rgba(0,0,0,0.02); z-index: 10; }
+    .back-btn { color: #006aff; font-size: 20px; margin-right: 15px; cursor: pointer; }
     
-    .profile-container { position: relative; width: 40px; height: 40px; margin-right: 10px; }
+    .profile-container { position: relative; width: 36px; height: 36px; margin-right: 12px; }
     .profile-pic { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-    .online-dot { position: absolute; bottom: 1px; right: 1px; width: 12px; height: 12px; background-color: #31a24c; border: 2px solid #fff; border-radius: 50%; display: none; }
+    .online-dot { position: absolute; bottom: 0; right: 0; width: 11px; height: 11px; background-color: #31a24c; border: 2px solid #fff; border-radius: 50%; display: none; }
     .is-online .online-dot { display: block; }
 
-    .user-details h3 { font-size: 16px; font-weight: 700; color: #050505; }
-    .user-details p { font-size: 13px; color: #65676b; }
-    .header-icons { display: flex; flex: 1; justify-content: flex-end; gap: 18px; color: #006aff; font-size: 18px; }
+    .user-details { flex: 1; }
+    .user-details h3 { font-size: 15px; font-weight: 600; color: #050505; margin-bottom: 2px; }
+    .user-details p { font-size: 12px; color: #65676b; }
+    
+    .header-icons { display: flex; gap: 18px; color: #006aff; font-size: 18px; }
 
+    /* Body */
     .chat-body { flex: 1; padding: 15px; overflow-y: auto; background: #fff; display: flex; flex-direction: column; }
+    
+    /* Waktu (Timestamp) */
+    .timestamp-row { text-align: center; font-size: 11px; color: #65676b; margin: 15px 0 10px 0; font-weight: 500; }
+
+    /* Pesan */
     .message-row { display: flex; margin-bottom: 10px; align-items: flex-end; }
     .message-row.received { justify-content: flex-start; }
     .message-row.sent { justify-content: flex-end; }
     
-    .mini-avatar-wrapper { position: relative; width: 30px; height: 30px; margin-right: 8px; flex-shrink: 0; }
+    .mini-avatar-wrapper { position: relative; width: 28px; height: 28px; margin-right: 8px; flex-shrink: 0; }
     .chat-avatar-small { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-    .mini-online-dot { position: absolute; bottom: 0; right: 0; width: 9px; height: 9px; background-color: #31a24c; border: 1.5px solid #fff; border-radius: 50%; display: none; }
+    .mini-online-dot { position: absolute; bottom: -1px; right: -1px; width: 9px; height: 9px; background-color: #31a24c; border: 1.5px solid #fff; border-radius: 50%; display: none; }
     .is-online .mini-online-dot { display: block; }
 
-    .bubble { max-width: 72%; padding: 10px 14px; font-size: 16px; line-height: 1.4; word-wrap: break-word; }
+    .bubble { max-width: 70%; padding: 8px 12px; font-size: 15px; line-height: 1.35; word-wrap: break-word; }
     .received .bubble { background-color: #f0f2f5; color: #050505; border-radius: 18px; border-bottom-left-radius: 4px; }
-    .sent .bubble { background-color: #0055ff; color: #fff; border-radius: 18px; border-bottom-right-radius: 4px; }
+    .sent .bubble { background-color: #006aff; color: #fff; border-radius: 18px; border-bottom-right-radius: 4px; }
     
-    .chat-img-attachment { max-width: 220px; border-radius: 15px; margin-top: 5px; border: 1px solid #ddd; }
+    .chat-img-attachment { max-width: 200px; border-radius: 15px; border: 1px solid #e4e6eb; }
 
-    .chat-footer { padding: 12px; display: flex; align-items: center; gap: 10px; border-top: 1px solid #e4e6eb; color: #006aff; font-size: 20px; }
+    /* Footer */
+    .chat-footer { padding: 10px 12px; display: flex; align-items: center; gap: 12px; border-top: 1px solid #e4e6eb; background: #fff; color: #006aff; font-size: 20px; }
     .input-wrapper { flex: 1; background-color: #f0f2f5; border-radius: 20px; padding: 8px 12px; display: flex; align-items: center; }
-    .input-wrapper input { border: none; background: transparent; outline: none; font-size: 16px; width: 100%; }
+    .input-wrapper input { border: none; background: transparent; outline: none; font-size: 15px; width: 100%; }
+    .input-wrapper .fa-face-smile { color: #006aff; font-size: 20px; }
+    #action-icon { cursor: pointer; transition: 0.2s; }
 </style>
 </head>
 <body>
 
 <div class="control-panel">
-    <h2> Panel Kendali</h2>
+    <h2><i class="fa-solid fa-sliders"></i> Panel Kendali</h2>
+    
     <div class="form-group">
         <label>Nama Lawan Bicara:</label>
         <input type="text" id="cp-name" value="Bayu Kurniawan">
     </div>
 
     <div class="form-group">
-        <label>Pilih Status:</label>
+        <label>Status Online:</label>
         <select id="cp-status-select">
             <option value="Sedang Aktif">Sedang Aktif (On)</option>
             <option value="Aktif 1 jam yang lalu">Aktif 1 jam yang lalu (Off)</option>
-            <option value="Aktif 2 jam yang lalu">Aktif 2 jam yang lalu</option>
-            <option value="Aktif 3 jam yang lalu">Aktif 3 jam yang lalu</option>
-            <option value="Aktif 4 jam yang lalu">Aktif 4 jam yang lalu</option>
-            <option value="Aktif 5 jam yang lalu">Aktif 5 jam yang lalu</option>
-            <option value="Aktif 6 jam yang lalu">Aktif 6 jam yang lalu</option>
-            <option value="Aktif 7 jam yang lalu">Aktif 7 jam yang lalu</option>
-            <option value="Aktif 8 jam yang lalu">Aktif 8 jam yang lalu</option>
-            <option value="Aktif 9 jam yang lalu">Aktif 9 jam yang lalu</option>
-            <option value="Aktif 10 jam yang lalu">Aktif 10 jam yang lalu</option>
             <option value="custom">Custom Teks...</option>
         </select>
         <input type="text" id="cp-status-custom" placeholder="Ketik status custom..." style="display:none; margin-top:5px;">
@@ -98,24 +113,41 @@
         <label>Ganti Foto Profil:</label>
         <input type="file" id="cp-profile-pic" accept="image/*">
     </div>
+
+    <hr style="border: 0; border-top: 1px solid #ddd; margin: 5px 0;">
+
     <div class="form-group">
-        <label>Siapa yang mengirim?</label>
+        <label>Sisipkan Keterangan Waktu:</label>
+        <div class="row-inputs">
+            <input type="text" id="cp-timestamp" placeholder="Contoh: 14:30 atau Sen 10:00">
+            <button class="btn-action" id="btn-add-time" style="background: #6c757d;">Tambah</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Pengirim Pesan Selanjutnya:</label>
         <div class="radio-group">
             <label><input type="radio" name="sender" value="sent" checked> Saya</label>
             <label><input type="radio" name="sender" value="received"> Dia</label>
         </div>
     </div>
+
     <div class="form-group">
         <label>Kirim Gambar ke Chat:</label>
-        <input type="file" id="cp-chat-image" accept="image/*">
-        <button class="btn-action" id="btn-send-image">Kirim Gambar</button>
+        <div class="row-inputs">
+            <input type="file" id="cp-chat-image" accept="image/*" style="padding: 6px;">
+            <button class="btn-action" id="btn-send-image">Kirim</button>
+        </div>
     </div>
     
+    <hr style="border: 0; border-top: 1px solid #ddd; margin: 5px 0;">
+
     <button class="btn-action btn-save" id="btn-save-ss">
         <i class="fa-solid fa-camera-retro"></i> Simpan Gambar Chat (SS)
     </button>
-    
-    <button class="btn-action" style="background:#dc3545;" onclick="document.getElementById('chat-body').innerHTML=''">Bersihkan Chat</button>
+    <button class="btn-action btn-clear" id="btn-clear-chat">
+        <i class="fa-solid fa-trash-can"></i> Bersihkan Obrolan
+    </button>
 </div>
 
 <div id="capture-area">
@@ -144,31 +176,42 @@
         <i class="fa-regular fa-image"></i>
         <i class="fa-solid fa-microphone"></i>
         <div class="input-wrapper">
-            <input type="text" id="chat-input" placeholder="Pesan">
+            <input type="text" id="chat-input" placeholder="Aa">
             <i class="fa-regular fa-face-smile"></i>
         </div>
-        <i class="fa-solid fa-thumbs-up"></i>
+        <i class="fa-solid fa-thumbs-up" id="action-icon"></i>
     </div>
 </div>
 
 <script>
+    // --- Elemen DOM ---
     const cpName = document.getElementById('cp-name');
     const headerName = document.getElementById('header-name');
     const cpStatusSelect = document.getElementById('cp-status-select');
     const cpStatusCustom = document.getElementById('cp-status-custom');
     const headerStatus = document.getElementById('header-status');
     const headerProfileContainer = document.getElementById('header-profile-container');
+    
     const chatBody = document.getElementById('chat-body');
     const chatInput = document.getElementById('chat-input');
+    const actionIcon = document.getElementById('action-icon');
+    
     const cpProfilePic = document.getElementById('cp-profile-pic');
     const headerPic = document.getElementById('header-pic');
+    
     const btnSendImage = document.getElementById('btn-send-image');
     const cpChatImage = document.getElementById('cp-chat-image');
-    const btnSaveSS = document.getElementById('btn-save-ss');
+    
+    const cpTimestamp = document.getElementById('cp-timestamp');
+    const btnAddTime = document.getElementById('btn-add-time');
 
+    // --- State Variables ---
     let currentPic = "https://i.pravatar.cc/150?img=12";
     let isOnlineNow = true;
+    let lastSender = null; // Menyimpan status pengirim terakhir (untuk grouping)
+    let lastMessageRow = null; // Menyimpan elemen baris pesan terakhir
 
+    // --- Update UI Header ---
     function updateStatusUI() {
         const val = cpStatusSelect.value;
         if (val === 'custom') {
@@ -188,7 +231,9 @@
     cpStatusCustom.addEventListener('input', updateStatusUI);
     cpName.addEventListener('input', (e) => headerName.textContent = e.target.value);
 
+    // --- Ganti Foto Profil ---
     cpProfilePic.addEventListener('change', function(e) {
+        if(!e.target.files[0]) return;
         const reader = new FileReader();
         reader.onload = (event) => {
             currentPic = event.target.result;
@@ -198,9 +243,25 @@
         reader.readAsDataURL(e.target.files[0]);
     });
 
+    // --- Logika Pesan & Grouping ---
     function createMessage(content, isMe, isImage = false) {
         const row = document.createElement('div');
+        const isSameSender = (lastSender === isMe);
+        
         row.className = `message-row ${isMe ? 'sent' : 'received'}`;
+        
+        // Logika Grouping Messenger Asli
+        if (isSameSender && lastMessageRow) {
+            // Rapatkan jarak dengan pesan sebelumnya
+            lastMessageRow.style.marginBottom = '2px';
+            
+            // Sembunyikan foto profil di pesan sebelumnya (hanya tampil di pesan terakhir)
+            if (!isMe) {
+                const prevAvatar = lastMessageRow.querySelector('.mini-avatar-wrapper');
+                if (prevAvatar) prevAvatar.style.visibility = 'hidden';
+            }
+        }
+
         const innerContent = isImage ? `<img src="${content}" class="chat-img-attachment">` : `<div class="bubble">${content}</div>`;
         
         if (isMe) {
@@ -214,18 +275,50 @@
                 ${innerContent}
             `;
         }
+        
         chatBody.appendChild(row);
         chatBody.scrollTop = chatBody.scrollHeight;
+        
+        // Update state
+        lastSender = isMe;
+        lastMessageRow = row;
     }
+
+    // --- Event Listener Input Chat ---
+    chatInput.addEventListener('input', (e) => {
+        // Animasi ikon Jempol -> Pesawat Kertas
+        if(e.target.value.trim() !== "") {
+            actionIcon.className = "fa-solid fa-paper-plane";
+        } else {
+            actionIcon.className = "fa-solid fa-thumbs-up";
+        }
+    });
 
     chatInput.addEventListener('keypress', (e) => {
         if(e.key === 'Enter' && chatInput.value.trim() !== "") {
             const isMe = document.querySelector('input[name="sender"]:checked').value === 'sent';
             createMessage(chatInput.value, isMe);
             chatInput.value = "";
+            actionIcon.className = "fa-solid fa-thumbs-up"; // Reset ikon
         }
     });
 
+    // Tambah Waktu
+    btnAddTime.addEventListener('click', () => {
+        const text = cpTimestamp.value.trim();
+        if(!text) return;
+        const tsDiv = document.createElement('div');
+        tsDiv.className = 'timestamp-row';
+        tsDiv.innerText = text;
+        chatBody.appendChild(tsDiv);
+        cpTimestamp.value = "";
+        
+        // Reset grouping agar pesan setelah waktu tidak nempel
+        lastSender = null; 
+        lastMessageRow = null;
+    });
+
+    // Kirim Gambar
     btnSendImage.addEventListener('click', () => {
         if(!cpChatImage.files[0]) return;
         const reader = new FileReader();
@@ -236,17 +329,25 @@
         reader.readAsDataURL(cpChatImage.files[0]);
     });
 
-    btnSaveSS.addEventListener('click', () => {
+    // --- Simpan Screenshot ---
+    document.getElementById('btn-save-ss').addEventListener('click', () => {
         html2canvas(document.getElementById('capture-area'), {
             useCORS: true,
             scale: 2,
             backgroundColor: "#ffffff"
         }).then(canvas => {
             const link = document.createElement('a');
-            link.download = `FakeChat_Bayu_${Date.now()}.png`;
+            link.download = `FakeChat_${headerName.textContent}_${Date.now()}.png`;
             link.href = canvas.toDataURL("image/png");
             link.click();
         });
+    });
+
+    // --- Bersihkan Obrolan ---
+    document.getElementById('btn-clear-chat').addEventListener('click', () => {
+        chatBody.innerHTML = '';
+        lastSender = null;
+        lastMessageRow = null;
     });
 </script>
 
